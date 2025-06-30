@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -21,12 +22,14 @@ public class RoadmapService {
     private final WeeksService weeksService;
     private final TopicsService topicsService;
     private final ResourcesService resourcesService;
+    private final ProgressTrackerService progressTrackerService;
 
-    public RoadmapService(LearningPathService learningPathService, WeeksService weeksService, TopicsService topicsService, ResourcesService resourcesService) {
+    public RoadmapService(LearningPathService learningPathService, WeeksService weeksService, TopicsService topicsService, ResourcesService resourcesService, ProgressTrackerService progressTrackerService) {
         this.learningPathService = learningPathService;
         this.weeksService = weeksService;
         this.topicsService = topicsService;
         this.resourcesService = resourcesService;
+        this.progressTrackerService = progressTrackerService;
     }
 
 
@@ -71,7 +74,7 @@ public class RoadmapService {
         }
     }
 
-    public RoadmapDTO getFullRoadmapByLearningPathId(long learningPathId){
+    public RoadmapDTO getFullRoadmapByLearningPathId(long userId, long learningPathId){
         LearningPaths learningPath = learningPathService.getLearningPathById(learningPathId);
 
         List<Weeks> weeksList = weeksService.getWeeksByLearningPathId(learningPathId);
@@ -80,12 +83,27 @@ public class RoadmapService {
             WeekDTO weekDTO = new WeekDTO();
             weekDTO.setWeek(week.getWeekNumber());
             weekDTO.setWeek_title(week.getTitle());
+
+            // Get topics for the week
             List<Topics> topicsList = topicsService.getTopicsByWeekId(week.getId());
-            List<String> topicsTitles = new ArrayList<>();
-            for (Topics topic : topicsList) {
-                topicsTitles.add(topic.getTitle());
+            List<Long> topicIds = topicsList.stream().map(Topics::getId).toList();
+
+            // Get progress map for the user
+            Map<Long, Boolean> completionMap = progressTrackerService.getCompletionStatusForUser(userId, topicIds);
+
+            // Build TopicDTO list with completion info
+            List<TopicDTO> topicDTOList = new ArrayList<>();
+            for (Topics topic : topicsList){
+                TopicDTO topicDTO = new TopicDTO();
+                topicDTO.setId(topic.getId());
+                topicDTO.setTitle(topic.getTitle());
+                topicDTO.setCompleted(completionMap.getOrDefault(topic.getId(),false));
+                topicDTOList.add(topicDTO);
             }
-            weekDTO.setTopics(topicsTitles);
+
+            weekDTO.setTopics(topicDTOList);
+
+            // Build Resource list for the week
             List<Resources> resourcesList = resourcesService.getResourcesByWeekId(week.getId());
             List<ResourceDTO> resourceDTOList = new ArrayList<>();
             for (Resources resource : resourcesList) {
@@ -100,8 +118,13 @@ public class RoadmapService {
             weekDTOList.add(weekDTO);
 
         }
+        // progress percentage for the learning path
+        double progressPercentage = progressTrackerService.getProgressPercentageForLearningPath(userId, learningPathId);
+        double roundedProgressPercentage = Math.round(progressPercentage * Math.pow(10, 2)) / Math.pow(10, 2);
+
         return new RoadmapDTO(
                 learningPathId,
+                roundedProgressPercentage,
                 new LLMResponseData(learningPath.getTitle(),
                         learningPath.getDurationWeeks(),
                         weekDTOList),

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RoadmapDTO {
     private long learningPathId;
+    private double progressPercentage;
     private LLMResponseData data;
     private String message;
 }

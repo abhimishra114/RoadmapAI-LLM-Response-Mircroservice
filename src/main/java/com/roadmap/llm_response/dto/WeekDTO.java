@@ -13,6 +13,6 @@ import java.util.List;
 public class WeekDTO { // represents single week
     private int week;
     private String week_title; // Title of the week
-    private List<String> topics; // List of topic titles
+    private List<TopicDTO> topics; // List of topic titles
     private List<ResourceDTO> resources; // List of resources for the week
 }

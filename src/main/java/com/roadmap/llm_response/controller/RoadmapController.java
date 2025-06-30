@@ -19,7 +19,7 @@ public class RoadmapController {
 
     // this will take user input and return a predefined roadmap response in JSON format.
     // TO-DO: Integrate with a real LLM service to generate dynamic responses based on user input.
-    @GetMapping("/")
+    @GetMapping("/ai")
     public RoadmapResponse response() throws JsonProcessingException {
         String jsonString = "{\n" +
                 "  \"status\": \"success\",\n" +
@@ -136,9 +136,10 @@ public class RoadmapController {
     }
 
 
-    @GetMapping("/{learningPathId}")
+    @GetMapping
     public RoadmapDTO getFullRoadmapByLearningPathId(
-            @PathVariable long learningPathId) {
-        return roadmapService.getFullRoadmapByLearningPathId(learningPathId);
+            @RequestParam long userId,
+            @RequestParam long learningPathId) {
+        return roadmapService.getFullRoadmapByLearningPathId(userId,learningPathId);
     }
 }
