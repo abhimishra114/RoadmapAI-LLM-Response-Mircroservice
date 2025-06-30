@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ResourceDTO {
     private String title; // Title of the resource
-    private String link; // URL of the resource
+    private String url; // URL of the resource
     private String type; // Type of resource (e.g., video, article, book)
 }

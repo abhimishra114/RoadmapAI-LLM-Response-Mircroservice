@@ -1,6 +1,9 @@
 package com.roadmap.llm_response.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,17 +18,15 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LearningPaths {
+public class ProgressTrackers {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long userId;
-    private String title;
-    private String goalDescription;
-    private int durationWeeks;
-    @Column(name = "generated_by_ai")
-    private boolean generatedByAI;
-    private String rawResponse; // Stores full LLM JSON
+    private long topicId;
+    private boolean isCompleted; // true if completed, false otherwise
+    private LocalDateTime completedAt;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
