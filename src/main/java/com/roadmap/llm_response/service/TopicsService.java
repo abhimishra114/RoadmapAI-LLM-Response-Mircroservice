@@ -42,6 +42,8 @@ public class TopicsService {
             Topics topic = new Topics();
             topic.setId(dto.getId());
             topic.setTitle(dto.getTitle());
+            topic.setDescription("");
+            topic.setIsCompleted(dto.isCompleted());
             topic.setWeekId(weekId);
             topics.add(topic);
         }

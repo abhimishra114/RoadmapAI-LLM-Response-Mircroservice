@@ -23,91 +23,165 @@ public class RoadmapController {
     public RoadmapResponse response() throws JsonProcessingException {
         String jsonString = "{\n" +
                 "  \"status\": \"success\",\n" +
-                "  \"message\": \"Embark on your Python journey with enthusiasm and consistency!\",\n" +
+                "  \"message\": \"This roadmap assumes you already have prior knowledge in the following areas: **Java fundamentals**, **Object-Oriented Programming (OOP)**, and **basic SQL/MySQL operations**. \uD83E\uDDE0 If you're new to these, consider starting with a beginner roadmap or extending your timeline for a smoother learning experience.\",\n" +
                 "  \"data\": {\n" +
-                "    \"goal\": \"Python Basics\",\n" +
-                "    \"duration_weeks\": 3,\n" +
+                "    \"goal\": \"Become a Spring Boot Developer\",\n" +
+                "    \"duration_weeks\": 4,\n" +
                 "    \"weeks\": [\n" +
                 "      {\n" +
                 "        \"week\": 1,\n" +
-                "        \"week_title\": \"Understanding the Fundamentals of Python\",\n" +
+                "        \"week_title\": \"Core Spring and Spring Boot Fundamentals\",\n" +
                 "        \"topics\": [\n" +
-                "          \"Introduction to Python & Setup\",\n" +
-                "          \"Variables, Data Types, and Operators\",\n" +
-                "          \"Input/Output and Basic String Manipulation\"\n" +
-                "        ],\n" +
-                "        \"resources\": [\n" +
                 "          {\n" +
-                "            \"title\": \"Python for Everybody (Getting Started)\",\n" +
-                "            \"url\": \"https://www.py4e.com/lessons/intro\",\n" +
-                "            \"type\": \"video series\"\n" +
+                "            \"title\": \"Introduction to Spring Framework & IoC Container\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 101\n" +
                 "          },\n" +
                 "          {\n" +
-                "            \"title\": \"Python Docs: Built-in Types\",\n" +
-                "            \"url\": \"https://docs.python.org/3/library/stdtypes.html\",\n" +
-                "            \"type\": \"article\"\n" +
+                "            \"title\": \"Dependency Injection (DI) and Beans\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 102\n" +
                 "          },\n" +
                 "          {\n" +
-                "            \"title\": \"W3Schools Python Variables\",\n" +
-                "            \"url\": \"https://www.w3schools.com/python/python_variables.asp\",\n" +
-                "            \"type\": \"article\"\n" +
+                "            \"title\": \"Getting Started with Spring Boot: Setup & Auto-configuration\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 103\n" +
                 "          }\n" +
-                "        ]\n" +
-                "      },\n" +
-                "      {\n" +
-                "        \"week\": 2,\n" +
-                "        \"week_title\": \"Control Flow and Data Structures\",\n" +
-                "        \"topics\": [\n" +
-                "          \"Conditional Statements (if/elif/else)\",\n" +
-                "          \"Loops (for/while)\",\n" +
-                "          \"Lists and Tuples\"\n" +
                 "        ],\n" +
                 "        \"resources\": [\n" +
                 "          {\n" +
-                "            \"title\": \"Real Python: Conditional Statements\",\n" +
-                "            \"url\": \"https://realpython.com/python-conditional-statements/\",\n" +
+                "            \"title\": \"Spring Framework Documentation - Core\",\n" +
+                "            \"url\": \"https://docs.spring.io/spring-framework/reference/core/overview.html\",\n" +
                 "            \"type\": \"article\"\n" +
                 "          },\n" +
                 "          {\n" +
-                "            \"title\": \"Programiz Python Loops\",\n" +
-                "            \"url\": \"https://www.programiz.com/python-programming/loops\",\n" +
+                "            \"title\": \"Spring Boot Official Guide\",\n" +
+                "            \"url\": \"https://spring.io/guides/gs/spring-boot/\",\n" +
                 "            \"type\": \"article\"\n" +
                 "          },\n" +
                 "          {\n" +
-                "            \"title\": \"Corey Schafer: Python Lists and Tuples Tutorial\",\n" +
-                "            \"url\": \"https://www.youtube.com/watch?v=W8KRzm-HUcc\",\n" +
+                "            \"title\": \"Inversion of Control and Dependency Injection in Spring\",\n" +
+                "            \"url\": \"https://www.youtube.com/watch?v=F0Cg-qRkFUs\",\n" +
                 "            \"type\": \"video\"\n" +
                 "          }\n" +
                 "        ]\n" +
                 "      },\n" +
                 "      {\n" +
-                "        \"week\": 3,\n" +
-                "        \"week_title\": \"Functions, Dictionaries, and Modules\",\n" +
+                "        \"week\": 2,\n" +
+                "        \"week_title\": \"Building RESTful APIs with Spring Boot\",\n" +
                 "        \"topics\": [\n" +
-                "          \"Functions and Scope\",\n" +
-                "          \"Dictionaries and Sets\",\n" +
-                "          \"Introduction to Modules and Packages\"\n" +
+                "          {\n" +
+                "            \"title\": \"Understanding REST Principles and HTTP Methods\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 201\n" +
+                "          },\n" +
+                "          {\n" +
+                "            \"title\": \"Spring Web (Spring MVC) for REST APIs\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 202\n" +
+                "          },\n" +
+                "          {\n" +
+                "            \"title\": \"Request Mapping, Path Variables, Request Params\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 203\n" +
+                "          }\n" +
                 "        ],\n" +
                 "        \"resources\": [\n" +
                 "          {\n" +
-                "            \"title\": \"Python for Everybody (Functions)\",\n" +
-                "            \"url\": \"https://www.py4e.com/lessons/functions\",\n" +
-                "            \"type\": \"video series\"\n" +
-                "          },\n" +
-                "          {\n" +
-                "            \"title\": \"Real Python: Dictionaries\",\n" +
-                "            \"url\": \"https://realpython.com/python-dicts/\",\n" +
+                "            \"title\": \"Spring @RestController Annotation\",\n" +
+                "            \"url\": \"https://www.baeldung.com/spring-restcontroller-annotation\",\n" +
                 "            \"type\": \"article\"\n" +
                 "          },\n" +
                 "          {\n" +
-                "            \"title\": \"Automate the Boring Stuff with Python: Organizing Programs with Functions\",\n" +
-                "            \"url\": \"https://automatetheboringstuff.com/2e/chapter3/\",\n" +
+                "            \"title\": \"RESTful Web Services by IBM\",\n" +
+                "            \"url\": \"https://www.ibm.com/topics/rest-apis\",\n" +
                 "            \"type\": \"article\"\n" +
                 "          },\n" +
                 "          {\n" +
-                "            \"title\": \"Python Docs: Modules\",\n" +
-                "            \"url\": \"https://docs.python.org/3/tutorial/modules.html\",\n" +
+                "            \"title\": \"Building a RESTful Web Service with Spring Boot\",\n" +
+                "            \"url\": \"https://spring.io/guides/gs/rest-service/\",\n" +
                 "            \"type\": \"article\"\n" +
+                "          }\n" +
+                "        ]\n" +
+                "      },\n" +
+                "      {\n" +
+                "        \"week\": 3,\n" +
+                "        \"week_title\": \"Data Persistence with Spring Data JPA and MySQL\",\n" +
+                "        \"topics\": [\n" +
+                "          {\n" +
+                "            \"title\": \"Introduction to Spring Data JPA and ORM concepts\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 301\n" +
+                "          },\n" +
+                "          {\n" +
+                "            \"title\": \"Entities, Repositories, and CrudRepository\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 302\n" +
+                "          },\n" +
+                "          {\n" +
+                "            \"title\": \"Connecting Spring Boot to MySQL Database\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 303\n" +
+                "          }\n" +
+                "        ],\n" +
+                "        \"resources\": [\n" +
+                "          {\n" +
+                "            \"title\": \"Spring Data JPA Reference Documentation\",\n" +
+                "            \"url\": \"https://docs.spring.io/spring-data/jpa/docs/current/reference/html/\",\n" +
+                "            \"type\": \"article\"\n" +
+                "          },\n" +
+                "          {\n" +
+                "            \"title\": \"Spring Boot and MySQL CRUD Example\",\n" +
+                "            \"url\": \"https://www.javatpoint.com/spring-boot-crud-example\",\n" +
+                "            \"type\": \"article\"\n" +
+                "          },\n" +
+                "          {\n" +
+                "            \"title\": \"Spring Boot JPA Tutorial\",\n" +
+                "            \"url\": \"https://www.youtube.com/watch?v=l_QyEP2u7b8\",\n" +
+                "            \"type\": \"video\"\n" +
+                "          }\n" +
+                "        ]\n" +
+                "      },\n" +
+                "      {\n" +
+                "        \"week\": 4,\n" +
+                "        \"week_title\": \"Advanced Topics and Project Development\",\n" +
+                "        \"topics\": [\n" +
+                "          {\n" +
+                "            \"title\": \"Error Handling and Exception Management in Spring Boot\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 401\n" +
+                "          },\n" +
+                "          {\n" +
+                "            \"title\": \"Basic Security with Spring Security (optional, if time permits)\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 402\n" +
+                "          },\n" +
+                "          {\n" +
+                "            \"title\": \"Building a Mini Project: RESTful API with CRUD operations\",\n" +
+                "            \"isCompleted\": false,\n" +
+                "            \"id\": 403\n" +
+                "          }\n" +
+                "        ],\n" +
+                "        \"resources\": [\n" +
+                "          {\n" +
+                "            \"title\": \"Global Exception Handling in Spring Boot\",\n" +
+                "            \"url\": \"https://www.baeldung.com/spring-boot-custom-error-pages\",\n" +
+                "            \"type\": \"article\"\n" +
+                "          },\n" +
+                "          {\n" +
+                "            \"title\": \"Spring Security Getting Started\",\n" +
+                "            \"url\": \"https://spring.io/guides/gs/securing-web/\",\n" +
+                "            \"type\": \"article\"\n" +
+                "          },\n" +
+                "          {\n" +
+                "            \"title\": \"Spring Boot REST API Tutorial for Beginners\",\n" +
+                "            \"url\": \"https://www.javainuse.com/spring/boot-rest\",\n" +
+                "            \"type\": \"article\"\n" +
+                "          },\n" +
+                "          {\n" +
+                "            \"title\": \"Example Spring Boot REST API GitHub Repo\",\n" +
+                "            \"url\": \"https://github.com/spring-projects/spring-boot-examples\",\n" +
+                "            \"type\": \"github\"\n" +
                 "          }\n" +
                 "        ]\n" +
                 "      }\n" +
