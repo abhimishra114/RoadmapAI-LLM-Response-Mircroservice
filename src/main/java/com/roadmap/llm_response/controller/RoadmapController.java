@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.roadmap.llm_response.dto.RoadmapDTO;
 import com.roadmap.llm_response.dto.RoadmapResponse;
+import com.roadmap.llm_response.model.RoadmapRequest;
+import com.roadmap.llm_response.service.LlmResponseService;
 import com.roadmap.llm_response.service.RoadmapService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +15,16 @@ import org.springframework.web.bind.annotation.*;
 public class RoadmapController {
 
     private final RoadmapService roadmapService;
-    public RoadmapController(RoadmapService roadmapService) {
+    private final LlmResponseService llmResponseService;
+    public RoadmapController(RoadmapService roadmapService, LlmResponseService llmResponseService) {
         this.roadmapService = roadmapService;
+        this.llmResponseService = llmResponseService;
     }
 
     // this will take user input and return a predefined roadmap response in JSON format.
     // TO-DO: Integrate with a real LLM service to generate dynamic responses based on user input.
-    @GetMapping("/ai")
-    public RoadmapResponse response() throws JsonProcessingException {
+    @GetMapping("/test")
+    public RoadmapResponse testResponse() throws JsonProcessingException {
         String jsonString = "{\n" +
                 "  \"status\": \"success\",\n" +
                 "  \"message\": \"This roadmap assumes you already have prior knowledge in the following areas: **Java fundamentals**, **Object-Oriented Programming (OOP)**, and **basic SQL/MySQL operations**. \uD83E\uDDE0 If you're new to these, consider starting with a beginner roadmap or extending your timeline for a smoother learning experience.\",\n" +
@@ -188,6 +192,17 @@ public class RoadmapController {
                 "    ]\n" +
                 "  }\n" +
                 "}";
+        // parsing the jsonString into RoadmapResponse object
+        ObjectMapper objectMapper = new ObjectMapper();
+        RoadmapResponse response = objectMapper.readValue(jsonString, RoadmapResponse.class);
+
+        return response;
+    }
+
+    @GetMapping("/ai")
+    public RoadmapResponse responseWithUserPrompt(
+            @RequestBody RoadmapRequest request) throws JsonProcessingException {
+        String jsonString = llmResponseService.generateResponse(request);
         // parsing the jsonString into RoadmapResponse object
         ObjectMapper objectMapper = new ObjectMapper();
         RoadmapResponse response = objectMapper.readValue(jsonString, RoadmapResponse.class);
